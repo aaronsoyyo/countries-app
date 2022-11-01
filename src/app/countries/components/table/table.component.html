@@ -1,0 +1,27 @@
+<table class="table table-hover" >
+  <caption>Search By Country</caption>
+  <thead>
+    <tr>
+      <th> #id </th>
+      <th> Flag </th>
+      <th> Name</th>
+      <th> Population </th>
+      <th> Area </th>
+      <th> Capital </th>
+      <th> Region </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of getCountriesList(); let i = index;">
+      <td> {{ country.cca2 }} </td>
+      <td> {{ country.flag }} <img class="small-flag" [src]="country.flag" [alt]="country.name.common"></td>
+      <td> {{ country.name.official }} </td>
+      <td> {{ country.population | number }} </td>
+      <td> {{ country.area }} </td>
+      <td> {{ country.capital }} </td>
+      <td> {{ country.region }} </td>
+      <td> <a [routerLink]="['/country', country.ccn3]">...View</a> </td>
+    </tr>
+  </tbody>
+</table>

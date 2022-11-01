@@ -1,0 +1,20 @@
+<h2>{{ title }}</h2>
+<div class="row">
+  <div class="col">
+    <app-search (onSearch)="searchBy( $event )"
+                (onDebounce)="searchBy( $event )"
+                placeholder="By Capital">
+    </app-search>
+  </div>
+</div>
+<hr>
+
+<div *ngIf="getError()"  class="alert alert-danger">
+  No elements found ...
+</div>
+
+<div *ngIf="!getError() && getCountriesList().length > 0" class="row">
+  <div class="col">
+    <app-table></app-table>
+  </div>
+</div>
