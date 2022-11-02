@@ -1,1 +1,51 @@
-<p>view-country works!</p>
+<div *ngIf="!getCountry(); else divCountry" class="alert alert-info">
+  <p>Loading data ...</p>
+</div>
+
+<ng-template #divCountry>
+  <div class="row">
+    <div class="col-12">
+        <h1 class="bg-dark p-2" style="color: rgb(0, 110, 255);">{{ getCountry().cca2 }} / {{ getCountry().name.common}} - {{ getCountry().name.official}} </h1>
+    </div>
+  </div>
+
+  <table class="table table-hover" >
+    <caption>View Country Data</caption>
+    <thead>
+      <tr>
+        <th> Property </th>
+        <th> Value </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> #id </td>
+        <td> {{ getCountry().cca2 }} </td>
+      </tr>
+      <tr>
+        <td> flag </td>
+        <td> {{ getCountry().flag }} <img class="small-flag" [src]="getCountry().flag" [alt]="getCountry().name.common"></td>
+      </tr>
+      <tr>
+        <td> official </td>
+        <td> {{ getCountry().name.official }} </td>
+      </tr>
+      <tr>
+        <td> population </td>
+        <td> {{ getCountry().population | number }} </td>
+      </tr>
+      <tr>
+        <td> area </td>
+        <td> {{ getCountry().area }} </td>
+      </tr>
+      <tr>
+        <td> capital </td>
+        <td> {{ getCountry().capital }} </td>
+      </tr>
+      <tr>
+        <td> region </td>
+        <td> {{ getCountry().region }} </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

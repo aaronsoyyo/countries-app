@@ -29,16 +29,15 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     console.log('SearchComponent - ngOnInit');
     this.deBouncer
-      .pipe(debounceTime(300))
+    .pipe(debounceTime(300))
       .subscribe( valor => {
-      console.log('deBouncer' + valor);
+      console.log('deBouncer: ' + valor);
       this.onDebounce.emit(valor);
     })
   }
 
   keyPress( ) {
     this.deBouncer.next( this.search );
-
   }
 
 }

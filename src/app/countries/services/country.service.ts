@@ -13,7 +13,7 @@ export class CountryService {
   private error: boolean = false;
   private countriesList: Country[] = [];
 
-  public observer: Observer<Country[]> = {
+  public observerList: Observer<Country[]> = {
     next: (value: Country[]) =>
     {
       console.log(`[observer] next`, value);
@@ -55,6 +55,13 @@ export class CountryService {
     this.error  = false;
     this.countriesList = [];
     this.httpClient.get<Country[]>(`${this.getApiUrl()}/${type}/${search}`)
-      .subscribe(this.observer);
+      .subscribe(this.observerList);
+  }
+
+  getCountryById( id: string) {
+    this.error  = false;
+    this.countriesList = [];
+    this.httpClient.get<Country[]>(`${this.getApiUrl()}alpha/${id}`)
+    .subscribe(this.observerList);
   }
 }
