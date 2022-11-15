@@ -2,16 +2,17 @@
   <p>Loading data ...</p>
 </div>
 
-<ng-template #divCountry>
-  <div class="row">
-    <div class="col-12 text-center fw-bold bg-image" style="background-image: url('{{getCountry().flags.png}}');">
-      <h1 class="badge bg-primary mt-2 p-2 mr-1 fs-1 ">{{ getCountry().name.common }} / {{ getCountry().cca2 }} - {{ getCountry().name.official }} </h1>
+<ng-template #divCountry class="animate__rubberBand">
+  <div class="row" style="padding: 12.5px;">
+    <div class="col-12 text-center fw-bold bg-image rounded"
+         style="background-image: url('{{getCountry().flags.png}}');">
+      <h5 class="badge bg-primary p-2 fs-1 m-5">{{ getCountry().name.common }}</h5>
     </div>
   </div>
 
   <div class="bg-image opacity-75 text-center" style="background-image: url('{{getCountry().flags.svg}}');">
     <table class="table text-center tdViewCountry">
-      <caption class="tdViewCountry">View Country Data</caption>
+      <caption class="tdViewCountry text-center"><img class="flag" [src]="getCountry().flags.png" [alt]="getCountry().name.common"></caption>
       <thead>
         <tr>
           <th> Property </th>
@@ -20,16 +21,17 @@
       </thead>
       <tbody>
         <tr>
-          <td> Id</td>
-          <td> {{ getCountry().cca2 }} - {{ getCountry().ccn3 }}</td>
-        </tr>
-        <tr>
-          <td> Flag </td>
-          <td> {{ getCountry().flag }} <img class="small-flag" [src]="getCountry().flag" [alt]="getCountry().name.common"></td>
-        </tr>
-        <tr>
           <td> Official </td>
-          <td> {{ getCountry().name.official }} </td>
+          <td> {{ getCountry().name.official | uppercase}} </td>
+        </tr>
+        <tr>
+          <td> Common </td>
+          <td> {{ getCountry().flag }} <img class="small-flag" [src]="getCountry().flag" [alt]="getCountry().name.common"> /
+               {{ getCountry().cca2 }} - {{ getCountry().ccn3 }}</td>
+        </tr>
+        <tr>
+          <td> Capital </td>
+          <td> {{ getCountry().capital }} </td>
         </tr>
         <tr>
           <td> Population </td>
@@ -37,15 +39,7 @@
         </tr>
         <tr>
           <td> Area </td>
-          <td> {{ getCountry().area }} </td>
-        </tr>
-        <tr>
-          <td> Capital </td>
-          <td> {{ getCountry().capital }} </td>
-        </tr>
-        <tr>
-          <td> Region </td>
-          <td> {{ getCountry().region }} </td>
+          <td> {{ getCountry().area | number }} </td>
         </tr>
         <tr>
           <td> Timezone </td>
@@ -57,7 +51,7 @@
         </tr>
         <tr>
           <td> StartOfWeek </td>
-          <td> {{ getCountry().startOfWeek }} </td>
+          <td> {{ getCountry().startOfWeek | uppercase }} </td>
         </tr>
         <tr>
           <td> Continents </td>
@@ -72,35 +66,40 @@
           <td> <a target="_blank" [href]="getCountry().maps.googleMaps"> {{ getCountry().maps.googleMaps }} </a></td>
         </tr>
         <tr>
+          <td> Flag </td>
+          <td> <a target="_blank" [href]="getCountry().flags.svg"> flag.svg </a></td>
+        </tr>
+        <tr>
           <td> CoatsOfArms </td>
           <td> <a target="_blank" [href]="getCountry().coatOfArms.png"> coatOfArms.png </a></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="bg-image opacity-75 " style="background-image: url('{{getCountry().flags.png}}');">
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['ara'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['bre'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['ces'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['cym'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['deu'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['est'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['fin'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['fra'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['hrv'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['hun'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['ita'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['jpn'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['kor'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['nld'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['pol'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['por'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['rus'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['slk'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['spa'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['swe'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['tur'].official}}</span>
-    <span class="badge bg-primary mr-1">{{ getCountry().translations['urd'].official}}</span>
+
+  <div class="bg-image opacity-75 rounded mb-2" style="background-image: url('{{getCountry().flags.png}}');">
+    <span class="badge bg-primary m-1">{{ getCountry().translations['ara'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['bre'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['ces'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['cym'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['deu'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['est'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['fin'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['fra'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['hrv'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['hun'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['ita'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['jpn'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['kor'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['nld'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['pol'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['por'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['rus'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['slk'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['spa'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['swe'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['tur'].official}}</span>
+    <span class="badge bg-primary m-1">{{ getCountry().translations['urd'].official}}</span>
 
   </div>
 </ng-template>

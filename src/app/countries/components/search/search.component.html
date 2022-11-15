@@ -1,7 +1,9 @@
 <form id="searchByCountryForm" autocomplete="on"
       (ngSubmit)="initSearch()"
       (input)="keyPress()">
-  <span class="bg-light p-2" style="display:inline; width: 40%;">Country</span>
+  <span class="p-2 me-2" style="display:inline; width: 40%; background-color:rgb(235, 191, 82);">
+    {{label}}
+  </span>
   <input type="text" name="search" [(ngModel)]="search"
   class="form-control" style="display:inline; width: 60%;"
   placeholder="{{placeholder}}" />

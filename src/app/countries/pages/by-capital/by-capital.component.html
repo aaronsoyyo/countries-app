@@ -1,8 +1,10 @@
-<h2>{{ title }}</h2>
+<hr>
+<h2 style="float: right; background-color:rgb(235, 191, 82);">{{ title | uppercase }}</h2>
 <div class="row">
   <div class="col">
     <app-search (onSearch)="searchBy( $event )"
                 (onDebounce)="searchBy( $event )"
+                label="Capital"
                 placeholder="By Capital">
     </app-search>
   </div>

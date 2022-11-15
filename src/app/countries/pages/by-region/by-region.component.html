@@ -1,13 +1,33 @@
-<h2>{{ title }}</h2>
+<hr>
+<h2 style="float: right; background-color:rgb(235, 191, 82);">{{ title | uppercase }}</h2>
 <div class="row">
   <div class="col">
     <app-search (onSearch)="searchBy( $event )"
                 (onDebounce)="searchBy( $event )"
+                label="Region"
                 placeholder="By Region">
     </app-search>
   </div>
 </div>
 <hr>
+
+<!-- [class.btn-light]="region === 'europe'" -->
+<!-- [ngClass]="{
+        'clases de css: true'
+        'btn-primary': region === 'europe',
+        'btn-outline-primary': region !== region
+}"-->
+<!-- [class]="(region === 'europe')? 'btn-primary : btn-outline-primary'"-->
+
+<div class="row">
+  <div class="col">
+      <button *ngFor="let region of regiones"
+              class="btn btn-outline-primary m-1"
+              (click)="searchBy( region )">
+        {{ region | uppercase }}
+      </button>
+  </div>
+</div>
 
 <div *ngIf="getError()"  class="alert alert-danger">
   No elements found ...

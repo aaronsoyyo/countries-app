@@ -8,6 +8,7 @@ import { CountryService } from '../../services/country.service';
 })
 export class ByRegionComponent implements OnInit {
 
+  regiones: string[] = ['africa','americas','asia','europe','oceania','antarctic'];
   private type: string = 'region';
   public title: string = 'By Region';
 
@@ -28,6 +29,7 @@ export class ByRegionComponent implements OnInit {
   }
 
   public searchBy( search: string) {
+    console.log(search);
     this.countryService.searchBy(search, this.type);
   }
 

@@ -11,7 +11,8 @@ export class SearchComponent implements OnInit {
 
   public search: string = '';
 
-  @Input() placeholder: string = 'By Country';
+  @Input()  placeholder: string = 'By Country';
+  @Input()  label: string = 'Country';
   @Output() onSearch: EventEmitter<string> = new EventEmitter ();
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
 
